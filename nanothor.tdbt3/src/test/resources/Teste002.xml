@@ -3,7 +3,7 @@
 	xsi:schemaLocation="https://github.com/NanoThor/TDB-T3 https://raw.githubusercontent.com/NanoThor/TDB-T3/master/nanothor.tdbt3/src/main/resources/xml/db.xsd">
 	<cursos>
 		<curso>
-			<codigo>1</codigo>
+			<codigo>0</codigo>
 			<descricao>CC</descricao>
 			<carga_horaria>600</carga_horaria>
 		</curso>
@@ -18,7 +18,7 @@
 			<matricula>0</matricula>
 			<nome>Andesronfffffffffffffffffffffffffffffffffffffffffffff</nome>
 			<email>anderson@hotmail.com</email>
-			<cod_curso>10</cod_curso>
+			<cod_curso>0</cod_curso>
 		</aluno>
 	</alunos>
 </banco>

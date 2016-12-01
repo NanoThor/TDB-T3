@@ -1,84 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns="https://github.com/NanoThor/TDB-T3"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tbd="https://github.com/NanoThor/TDB-T3"
 	targetNamespace="https://github.com/NanoThor/TDB-T3"
 	elementFormDefault="qualified">
 	<!-- ================ Root? ================ -->
-	<xs:element name="banco" type="DBType">
+	<xs:element name="banco" type="tbd:DBType">
 		<xs:key name="AlunoId">
-			<xs:selector xpath="aluno"></xs:selector>
-			<xs:field xpath="matricula"></xs:field>
+			<xs:selector xpath="./tbd:alunos/tbd:aluno" />
+			<xs:field xpath="matricula" />
 		</xs:key>
 		<xs:key name="CursoId">
-			<xs:selector xpath="curso"></xs:selector>
-			<xs:field xpath="codigo"></xs:field>
+			<xs:selector xpath="./tbd:cursos/tbd:curso" />
+			<xs:field xpath="codigo" />
 		</xs:key>
-		<xs:keyref name="CursoIdRef" refer="CursoId">
-			<xs:selector xpath="aluno"></xs:selector>
-			<xs:field xpath="cod_curso"></xs:field>
+		<xs:keyref name="CursoIdRef" refer="tbd:CursoId">
+			<xs:selector xpath="./tbd:alunos/tbd:aluno" />
+			<xs:field xpath="cod_curso" />
 		</xs:keyref>
 	</xs:element>
 
 	<!-- ================ Tipos ================ -->
 	<xs:complexType name="DBType">
 		<xs:sequence>
-			<xs:element name="cursos" type="CursosType"></xs:element>
-			<xs:element name="alunos" type="AlunosType"></xs:element>
+			<xs:element name="cursos" type="tbd:CursosType"/>
+			<xs:element name="alunos" type="tbd:AlunosType"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="AlunosType">
 		<xs:sequence>
-			<xs:element name="aluno" type="AlunoType" maxOccurs="unbounded"
-				minOccurs="0"></xs:element>
+			<xs:element name="aluno" type="tbd:AlunoType" maxOccurs="unbounded"
+				minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="AlunoType">
 		<xs:sequence>
-			<xs:element name="matricula" type="xs:integer"></xs:element>
+			<xs:element name="matricula" type="xs:integer"/>
 			<xs:element name="nome">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
-						<xs:minLength value="1"></xs:minLength>
-						<xs:maxLength value="60"></xs:maxLength>
-						<xs:whiteSpace value="collapse"></xs:whiteSpace>
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+						<xs:whiteSpace value="collapse"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
 			<xs:element name="email">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
-						<xs:minLength value="1"></xs:minLength>
-						<xs:maxLength value="60"></xs:maxLength>
-						<xs:whiteSpace value="collapse"></xs:whiteSpace>
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+						<xs:whiteSpace value="collapse"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="cod_curso" type="xs:integer"></xs:element>
+			<xs:element name="cod_curso" type="xs:integer"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="CursosType">
 		<xs:sequence>
-			<xs:element name="curso" type="CursoType" maxOccurs="unbounded"
-				minOccurs="0"></xs:element>
+			<xs:element name="curso" type="tbd:CursoType" maxOccurs="unbounded"
+				minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="CursoType">
 		<xs:sequence>
-			<xs:element name="codigo" type="xs:integer"></xs:element>
+			<xs:element name="codigo" type="xs:integer"/>
 			<xs:element name="descricao">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
-						<xs:minLength value="1"></xs:minLength>
-						<xs:maxLength value="60"></xs:maxLength>
-						<xs:whiteSpace value="collapse"></xs:whiteSpace>
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+						<xs:whiteSpace value="collapse"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="carga_horaria" type="xs:integer"></xs:element>
+			<xs:element name="carga_horaria" type="xs:integer"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

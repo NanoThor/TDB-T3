@@ -8,15 +8,23 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 public class PxpMain {
 	public static void main(String[] args) throws Exception {
@@ -27,10 +35,18 @@ public class PxpMain {
 			File file = fc.getSelectedFile();
 
 			Document document = loadXml(file);
-			validateDtd(document);
+			// validateDtd(document);
 			validateXsd(document);
 
 			System.out.println(file);
+
+			// // Use a Transformer for output
+			// TransformerFactory tFactory = TransformerFactory.newInstance();
+			// Transformer transformer = tFactory.newTransformer();
+			//
+			// DOMSource source = new DOMSource(document);
+			// StreamResult result = new StreamResult(System.out);
+			// transformer.transform(source, result);
 		}
 	}
 
@@ -45,7 +61,16 @@ public class PxpMain {
 		assert su != null;
 		Schema schema = factory.newSchema(su);
 		Validator validator = schema.newValidator();
-
+		XPathFactory xPathfactory = XPathFactory.newInstance();
+		XPath xpath = xPathfactory.newXPath();
+		XPathExpression expr = xpath.compile("tbd:alunos/tbd:aluno");
+		NodeList nl = (NodeList) expr.evaluate(document, XPathConstants.NODESET);
+		for (int i = 0; i < nl.getLength(); i++) {
+			System.out.println(nl.item(i));
+		}
+		
+		System.out.println(nl.getLength());
+		
 		validator.validate(new DOMSource(document));
 	}
 
