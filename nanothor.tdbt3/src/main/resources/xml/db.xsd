@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="https://github.com/NanoThor/TDB-T3" xmlns="https://github.com/NanoThor/TDB-T3"
+	xmlns="https://github.com/NanoThor/TDB-T3"
+	targetNamespace="https://github.com/NanoThor/TDB-T3"
 	elementFormDefault="qualified">
 	<!-- ================ Root? ================ -->
-	<xs:element name="banco" type="DBType"></xs:element>
+	<xs:element name="banco" type="DBType">
+		<xs:key name="AlunoId">
+			<xs:selector xpath="aluno"></xs:selector>
+			<xs:field xpath="matricula"></xs:field>
+		</xs:key>
+		<xs:key name="CursoId">
+			<xs:selector xpath="curso"></xs:selector>
+			<xs:field xpath="codigo"></xs:field>
+		</xs:key>
+		<xs:keyref name="CursoIdRef" refer="CursoId">
+			<xs:selector xpath="aluno"></xs:selector>
+			<xs:field xpath="cod_curso"></xs:field>
+		</xs:keyref>
+	</xs:element>
 
 	<!-- ================ Tipos ================ -->
 	<xs:complexType name="DBType">
 		<xs:sequence>
-			<xs:element name="alunos" type="AlunosType"></xs:element>
 			<xs:element name="cursos" type="CursosType"></xs:element>
+			<xs:element name="alunos" type="AlunosType"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -22,10 +36,26 @@
 
 	<xs:complexType name="AlunoType">
 		<xs:sequence>
-			<xs:element name="matricula" type="xs:int"></xs:element>
-			<xs:element name="nome" type="xs:string"></xs:element>
-			<xs:element name="email" type="xs:string"></xs:element>
-			<xs:element name="cod_curso" type="xs:int"></xs:element>
+			<xs:element name="matricula" type="xs:integer"></xs:element>
+			<xs:element name="nome">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"></xs:minLength>
+						<xs:maxLength value="60"></xs:maxLength>
+						<xs:whiteSpace value="collapse"></xs:whiteSpace>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="email">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"></xs:minLength>
+						<xs:maxLength value="60"></xs:maxLength>
+						<xs:whiteSpace value="collapse"></xs:whiteSpace>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="cod_curso" type="xs:integer"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -39,8 +69,16 @@
 	<xs:complexType name="CursoType">
 		<xs:sequence>
 			<xs:element name="codigo" type="xs:integer"></xs:element>
-			<xs:element name="descricao" type="xs:string"></xs:element>
-			<xs:element name="codigo" type="xs:integer"></xs:element>
+			<xs:element name="descricao">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"></xs:minLength>
+						<xs:maxLength value="60"></xs:maxLength>
+						<xs:whiteSpace value="collapse"></xs:whiteSpace>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="carga_horaria" type="xs:integer"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

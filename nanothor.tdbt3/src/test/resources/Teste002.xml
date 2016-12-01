@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<banco xmlns="https://github.com/NanoThor/TDB-T3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://github.com/NanoThor/TDB-T3 https://raw.githubusercontent.com/NanoThor/TDB-T3/master/nanothor.tdbt3/src/main/resources/xml/db.xsd">
+	<cursos>
+		<curso>
+			<codigo>1</codigo>
+			<descricao>CC</descricao>
+			<carga_horaria>600</carga_horaria>
+		</curso>
+		<curso>
+			<codigo>1</codigo>
+			<descricao>AV</descricao>
+			<carga_horaria>600</carga_horaria>
+		</curso>
+	</cursos>
+	<alunos>
+		<aluno>
+			<matricula>0</matricula>
+			<nome>Andesronfffffffffffffffffffffffffffffffffffffffffffff</nome>
+			<email>anderson@hotmail.com</email>
+			<cod_curso>10</cod_curso>
+		</aluno>
+	</alunos>
+</banco>

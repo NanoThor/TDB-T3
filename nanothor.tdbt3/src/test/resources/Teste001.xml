@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<banco xmlns="https://github.com/NanoThor/TDB-T3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://github.com/NanoThor/TDB-T3 https://raw.githubusercontent.com/NanoThor/TDB-T3/master/nanothor.tdbt3/src/main/resources/xml/db.xsd">
+	<alunos></alunos>
+	<cursos></cursos>
+</banco>
