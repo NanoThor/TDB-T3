@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://github.com/NanoThor/TDB-T3" xmlns="https://github.com/NanoThor/TDB-T3"
+	elementFormDefault="qualified">
+	<!-- ================ Root? ================ -->
+	<xs:element name="banco" type="DBType"></xs:element>
+
+	<!-- ================ Tipos ================ -->
+	<xs:complexType name="DBType">
+		<xs:sequence>
+			<xs:element name="alunos" type="AlunosType"></xs:element>
+			<xs:element name="cursos" type="CursosType"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AlunosType">
+		<xs:sequence>
+			<xs:element name="aluno" type="AlunoType" maxOccurs="unbounded"
+				minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AlunoType">
+		<xs:sequence>
+			<xs:element name="matricula" type="xs:int"></xs:element>
+			<xs:element name="nome" type="xs:string"></xs:element>
+			<xs:element name="email" type="xs:string"></xs:element>
+			<xs:element name="cod_curso" type="xs:int"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CursosType">
+		<xs:sequence>
+			<xs:element name="curso" type="CursoType" maxOccurs="unbounded"
+				minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CursoType">
+		<xs:sequence>
+			<xs:element name="codigo" type="xs:integer"></xs:element>
+			<xs:element name="descricao" type="xs:string"></xs:element>
+			<xs:element name="codigo" type="xs:integer"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
