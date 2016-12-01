@@ -6,15 +6,15 @@
 	<xs:element name="banco" type="tbd:DBType">
 		<xs:key name="AlunoId">
 			<xs:selector xpath="./tbd:alunos/tbd:aluno" />
-			<xs:field xpath="matricula" />
+			<xs:field xpath="tbd:matricula" />
 		</xs:key>
 		<xs:key name="CursoId">
 			<xs:selector xpath="./tbd:cursos/tbd:curso" />
-			<xs:field xpath="codigo" />
+			<xs:field xpath="tbd:codigo" />
 		</xs:key>
 		<xs:keyref name="CursoIdRef" refer="tbd:CursoId">
 			<xs:selector xpath="./tbd:alunos/tbd:aluno" />
-			<xs:field xpath="cod_curso" />
+			<xs:field xpath="tbd:cod_curso" />
 		</xs:keyref>
 	</xs:element>
 

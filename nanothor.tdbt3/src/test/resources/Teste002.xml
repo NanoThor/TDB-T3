@@ -8,7 +8,7 @@
 			<carga_horaria>600</carga_horaria>
 		</curso>
 		<curso>
-			<codigo>1</codigo>
+			<codigo>2</codigo>
 			<descricao>AV</descricao>
 			<carga_horaria>600</carga_horaria>
 		</curso>
@@ -18,7 +18,7 @@
 			<matricula>0</matricula>
 			<nome>Andesronfffffffffffffffffffffffffffffffffffffffffffff</nome>
 			<email>anderson@hotmail.com</email>
-			<cod_curso>0</cod_curso>
+			<cod_curso>2</cod_curso>
 		</aluno>
 	</alunos>
 </banco>
